@@ -47,11 +47,11 @@ mod tests {
 
     #[test]
     fn search_returns_one_result() {
-        let query = "duct";
-        let contents = "Rust:\nsafe, fast, productive.\nPick three.";
+        let query = "terr";
+        let contents = "Punctuation\nuncharted territories.";
 
         assert_eq!(
-            vec!["safe, fast, productive."],
+            vec!["uncharted territories."],
             search(query, contents)
         );
     }
