@@ -78,4 +78,15 @@ mod tests {
             search(query, contents)
         );
     }
+
+    #[test]
+    fn search_case_insensitive() {
+        let query = "pun";
+        let contents = "Punctuation\nuncharted territories.";
+
+        assert_eq!(
+            vec!["Punctuation"],
+            search(query, contents)
+        );
+    }
 }
