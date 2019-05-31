@@ -38,15 +38,23 @@ mod tests {
     use super::*;
 
     #[test]
-    fn one_result() {
+    fn search_returns_one_result() {
         let query = "duct";
-        let contents = "\
-Rust:
-safe, fast, productive.
-Pick three.";
+        let contents = "Rust:\nsafe, fast, productive.\nPick three.";
 
         assert_eq!(
             vec!["safe, fast, productive."],
+            search(query, contents)
+        );
+    }
+
+    #[test]
+    fn search_returns_multiple_results() {
+        let query = "unc";
+        let contents = "Punctuation\nuncharted territories.";
+
+        assert_eq!(
+            vec!["Punctuation", "uncharted territories."],
             search(query, contents)
         );
     }
