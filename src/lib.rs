@@ -46,18 +46,18 @@ mod tests {
     use super::*;
 
     #[test]
-    fn search_returns_one_result() {
-        let query = "terr";
+    fn test_search_returns_one_result() {
+        let query = "Pun";
         let contents = "Punctuation\nuncharted territories.";
 
         assert_eq!(
-            vec!["uncharted territories."],
+            vec!["Punctuation"],
             search(query, contents)
         );
     }
 
     #[test]
-    fn search_returns_multiple_results() {
+    fn test_search_returns_multiple_results() {
         let query = "unc";
         let contents = "Punctuation\nuncharted territories.";
 
@@ -68,7 +68,7 @@ mod tests {
     }
 
     #[test]
-    fn search_returns_no_result() {
+    fn test_search_returns_no_result() {
         let query = "morph";
         let contents = "Punctuation\nuncharted territories.";
         let result: Vec<&str> = Vec::new();
@@ -80,13 +80,13 @@ mod tests {
     }
 
     #[test]
-    fn search_case_insensitive() {
+    fn test_search_case_insensitive() {
         let query = "pun";
         let contents = "Punctuation\nuncharted territories.";
 
         assert_eq!(
             vec!["Punctuation"],
-            search(query, contents)
+            search_case_insensitive(query, contents)
         );
     }
 }
