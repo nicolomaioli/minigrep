@@ -26,7 +26,9 @@ pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(&config.filename)?;
 
-    println!("{} contents:\n\n{}", &config.filename, &contents);
+    for result in search(&config.query, &contents) {
+        println!("{}", result);
+    }
 
     Ok(())
 }
