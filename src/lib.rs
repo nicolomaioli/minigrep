@@ -66,4 +66,16 @@ mod tests {
             search(query, contents)
         );
     }
+
+    #[test]
+    fn search_returns_no_result() {
+        let query = "morph";
+        let contents = "Punctuation\nuncharted territories.";
+        let result: Vec<&str> = Vec::new();
+
+        assert_eq!(
+            result,
+            search(query, contents)
+        );
+    }
 }
