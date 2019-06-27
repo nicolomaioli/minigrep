@@ -63,7 +63,7 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     if results.len() < 1 {
         println!("Query '{}' not found in {}", config.query, config.filename);
         println!("Search case sensitive: {}", config.case_sensitive);
-        () // Early return
+        return Ok(())
     }
 
     for result in results {
@@ -120,5 +120,10 @@ mod tests {
             vec!["Punctuation"],
             search_case_insensitive(query, contents)
         );
+    }
+
+    #[test]
+    fn test_run_case_sensitive() {
+
     }
 }
