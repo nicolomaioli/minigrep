@@ -1,6 +1,6 @@
 use std::env;
-use std::fs;
 use std::error::Error;
+use std::fs;
 
 pub struct Config {
     pub query: String,
@@ -24,7 +24,11 @@ impl Config {
 
         let case_sensitive = env::var("CASE_INSENSITIVE").is_err();
 
-        Ok(Config { query, filename, case_sensitive })
+        Ok(Config {
+            query,
+            filename,
+            case_sensitive,
+        })
     }
 }
 
@@ -60,7 +64,7 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     if results.len() < 1 {
         println!("Query '{}' not found in {}", config.query, config.filename);
         println!("Search case sensitive: {}", config.case_sensitive);
-        return Ok(())
+        return Ok(());
     }
 
     for result in results {
@@ -79,10 +83,7 @@ mod tests {
         let query = "Pun";
         let contents = "Punctuation\nuncharted territories.";
 
-        assert_eq!(
-            vec!["Punctuation"],
-            search(query, contents)
-        );
+        assert_eq!(vec!["Punctuation"], search(query, contents));
     }
 
     #[test]
@@ -102,10 +103,7 @@ mod tests {
         let contents = "Punctuation\nuncharted territories.";
         let result: Vec<&str> = Vec::new();
 
-        assert_eq!(
-            result,
-            search(query, contents)
-        );
+        assert_eq!(result, search(query, contents));
     }
 
     #[test]

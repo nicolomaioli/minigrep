@@ -1,6 +1,6 @@
+use minigrep::Config;
 use std::env;
 use std::process;
-use minigrep::Config;
 
 fn main() {
     let args = env::args(); // env::args() returns an iterator
