@@ -127,9 +127,4 @@ mod tests {
             search_case_insensitive(query, contents)
         );
     }
-
-    #[test]
-    fn test_run_case_sensitive() {
-
-    }
 }
